@@ -11,4 +11,5 @@ class CustomColor {
   static const Color yellowPrimary = Color(0xffFFAF29);
   static const Color whitePrimary = Color(0xffEAEAEB);
   static const Color whiteSecondary = Color(0xffC8C9CE);
+  static const Color hover1 = Color(0xffD48401);
 }
