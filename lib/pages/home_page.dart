@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_protfolio/constans/colors.dart';
 import 'package:my_protfolio/constans/size.dart';
+import 'package:my_protfolio/widgets/main_mobile.dart';
 
 import '../widgets/drawer_mobile.dart';
 import '../widgets/header_desktop.dart';
@@ -20,6 +21,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     final screenWidth = screenSize.width;
+    final screenHeight = screenSize.height;
     return LayoutBuilder(builder: (context, constraints) {
       return Scaffold(
           key: scaffoldKey,
@@ -40,8 +42,10 @@ class _HomePageState extends State<HomePage> {
                     scaffoldKey.currentState?.openEndDrawer();
                   },
                 ),
-
-              const MainDesktop(),
+              if (constraints.maxWidth >= kMinDesktopWidth)
+                const MainDesktop()
+              else
+                const MainMobile(),
 
               //Skils
               Container(
