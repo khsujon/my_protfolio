@@ -65,10 +65,10 @@ class MainDesktop extends StatelessWidget {
               ],
             ),
           ),
-          Flexible(
-            fit: FlexFit.tight,
+          SizedBox(
+            width: screenWidth / 3,
             child: Image.asset(
-              "assets/myimg.jpg",
+              "assets/myimg3.png",
               fit: BoxFit.cover,
             ),
           ),
