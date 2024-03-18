@@ -7,6 +7,7 @@ import '../widgets/drawer_mobile.dart';
 import '../widgets/header_desktop.dart';
 import '../widgets/header_mobile.dart';
 import '../widgets/main_desktop.dart';
+import '../widgets/skills_desktop.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -49,9 +50,29 @@ class _HomePageState extends State<HomePage> {
 
               //Skils
               Container(
-                height: 500,
-                width: double.maxFinite,
-                color: Colors.blueGrey,
+                width: screenWidth,
+                padding: const EdgeInsets.fromLTRB(25, 20, 25, 60),
+                color: CustomColor.bgLight1,
+                child: const Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    //title
+                    Text(
+                      "What I can do?",
+                      style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          color: CustomColor.whitePrimary),
+                    ),
+
+                    SizedBox(
+                      height: 50.0,
+                    ),
+
+                    //platforms and skills
+                    skillDesktop(),
+                  ],
+                ),
               ),
 
               //Projects
