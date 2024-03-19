@@ -24,6 +24,7 @@ List<ProjectUtils> hobbyProjectUtils = [
     subtitle:
         'Lorem ipsum dolor sit amet, consectetur Maecenas molestie mi vel lorem lobortis vestibulum. iculadignissim.',
     androidLink: 'http://www.sample.info/friend#downtown',
+    webLink: 'http://www.sample.info/friend#downtown',
   ),
   ProjectUtils(
     image: 'assets/projects/project2.png',
@@ -31,6 +32,7 @@ List<ProjectUtils> hobbyProjectUtils = [
     subtitle:
         'Lorem ipsum dolor sit amet, consectetur Maecenas molestie mi vel lorem lobortis vestibulum. iculadignissim.',
     iosLink: 'http://www.sample.info/friend#downtown',
+    androidLink: 'http://www.sample.info/friend#downtown',
   ),
   ProjectUtils(
     image: 'assets/projects/project3.png',
@@ -38,6 +40,8 @@ List<ProjectUtils> hobbyProjectUtils = [
     subtitle:
         'Lorem ipsum dolor sit amet, consectetur Maecenas molestie mi vel lorem lobortis vestibulum. iculadignissim.',
     androidLink: 'http://www.sample.info/friend#downtown',
+    iosLink: 'http://www.sample.info/friend#downtown',
+    webLink: 'http://www.sample.info/friend#downtown',
   ),
 ];
 

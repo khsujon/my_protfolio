@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:my_protfolio/constans/colors.dart';
 import 'package:my_protfolio/constans/size.dart';
-import 'package:my_protfolio/utils/project_utils.dart';
 import 'package:my_protfolio/widgets/main_mobile.dart';
 
 import '../widgets/drawer_mobile.dart';
 import '../widgets/header_desktop.dart';
 import '../widgets/header_mobile.dart';
 import '../widgets/main_desktop.dart';
-import '../widgets/project_card.dart';
+import '../widgets/project_section.dart';
 import '../widgets/skills_desktop.dart';
 import '../widgets/skills_mobile.dart';
 
@@ -81,28 +80,12 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
 
-              //Projects
-              Container(
-                width: screenWidth,
-                padding: const EdgeInsets.fromLTRB(25, 20, 25, 60),
-                child: Column(
-                  children: [
-                    //workprojects Title
-                    const Text(
-                      "Work Projects",
-                      style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          color: CustomColor.whitePrimary),
-                    ),
-
-                    //workProjects cards
-                    projectCardWidget(
-                      project: workProjectUtils.first,
-                    ),
-                  ],
-                ),
+              const SizedBox(
+                height: 50,
               ),
+
+              //Projects
+              const ProjectSection(),
 
               //Contact
               Container(
