@@ -8,6 +8,7 @@ import '../widgets/header_desktop.dart';
 import '../widgets/header_mobile.dart';
 import '../widgets/main_desktop.dart';
 import '../widgets/skills_desktop.dart';
+import '../widgets/skills_mobile.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -53,11 +54,11 @@ class _HomePageState extends State<HomePage> {
                 width: screenWidth,
                 padding: const EdgeInsets.fromLTRB(25, 20, 25, 60),
                 color: CustomColor.bgLight1,
-                child: const Column(
+                child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     //title
-                    Text(
+                    const Text(
                       "What I can do?",
                       style: TextStyle(
                           fontSize: 24,
@@ -65,12 +66,15 @@ class _HomePageState extends State<HomePage> {
                           color: CustomColor.whitePrimary),
                     ),
 
-                    SizedBox(
+                    const SizedBox(
                       height: 50.0,
                     ),
 
                     //platforms and skills
-                    skillDesktop(),
+                    if (constraints.maxWidth >= kMedDesktopWidth)
+                      const skillDesktop()
+                    else
+                      const skillMobile()
                   ],
                 ),
               ),
