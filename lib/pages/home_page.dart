@@ -3,6 +3,7 @@ import 'package:my_protfolio/constans/colors.dart';
 import 'package:my_protfolio/constans/size.dart';
 import 'package:my_protfolio/widgets/main_mobile.dart';
 
+import '../widgets/contact_section.dart';
 import '../widgets/drawer_mobile.dart';
 import '../widgets/header_desktop.dart';
 import '../widgets/header_mobile.dart';
@@ -87,12 +88,12 @@ class _HomePageState extends State<HomePage> {
               //Projects
               const ProjectSection(),
 
-              //Contact
-              Container(
-                height: 500,
-                width: double.maxFinite,
-                color: Colors.blueGrey,
+              const SizedBox(
+                height: 50,
               ),
+
+              //Contact
+              ContactSection(),
 
               //Footer
               Container(
