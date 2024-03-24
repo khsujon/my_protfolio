@@ -21,6 +21,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final scrollController = ScrollController();
+  final List<GlobalKey> navbarKeys = List.generate(4, (index) => GlobalKey());
 
   @override
   Widget build(BuildContext context) {
@@ -32,78 +34,106 @@ class _HomePageState extends State<HomePage> {
           key: scaffoldKey,
           endDrawer: constraints.maxWidth >= kMinDesktopWidth
               ? null
-              : const DrawerMobile(),
-          backgroundColor: CustomColor.scaffoldBg,
-          body: ListView(
-            scrollDirection: Axis.vertical,
-            children: [
-              //Main
-              if (constraints.maxWidth >= kMinDesktopWidth)
-                const HeaderDesktop()
-              else
-                HeaderMobile(
-                  onLogoTap: () {},
-                  onMenuTap: () {
-                    scaffoldKey.currentState?.openEndDrawer();
+              : DrawerMobile(
+                  onNavItemTap: (int navIndex) {
+                    //call function
+                    scaffoldKey.currentState?.closeEndDrawer();
+                    scrollToSection(navIndex);
                   },
                 ),
-              if (constraints.maxWidth >= kMinDesktopWidth)
-                const MainDesktop()
-              else
-                const MainMobile(),
+          backgroundColor: CustomColor.scaffoldBg,
+          body: SingleChildScrollView(
+            controller: scrollController,
+            scrollDirection: Axis.vertical,
+            child: Column(
+              children: [
+                SizedBox(key: navbarKeys.first),
+                //Main
+                if (constraints.maxWidth >= kMinDesktopWidth)
+                  HeaderDesktop(
+                    onNavMenuTap: (int navIndex) {
+                      scrollToSection(navIndex);
+                    },
+                  )
+                else
+                  HeaderMobile(
+                    onLogoTap: () {},
+                    onMenuTap: () {
+                      scaffoldKey.currentState?.openEndDrawer();
+                    },
+                  ),
+                if (constraints.maxWidth >= kMinDesktopWidth)
+                  const MainDesktop()
+                else
+                  const MainMobile(),
 
-              //Skils
-              Container(
-                width: screenWidth,
-                padding: const EdgeInsets.fromLTRB(25, 20, 25, 60),
-                color: CustomColor.bgLight1,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    //title
-                    const Text(
-                      "What I can do?",
-                      style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          color: CustomColor.whitePrimary),
-                    ),
+                //Skils
+                Container(
+                  key: navbarKeys[1],
+                  width: screenWidth,
+                  padding: const EdgeInsets.fromLTRB(25, 20, 25, 60),
+                  color: CustomColor.bgLight1,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      //title
+                      const Text(
+                        "What I can do?",
+                        style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                            color: CustomColor.whitePrimary),
+                      ),
 
-                    const SizedBox(
-                      height: 50.0,
-                    ),
+                      const SizedBox(
+                        height: 50.0,
+                      ),
 
-                    //platforms and skills
-                    if (constraints.maxWidth >= kMedDesktopWidth)
-                      const skillDesktop()
-                    else
-                      const skillMobile()
-                  ],
+                      //platforms and skills
+                      if (constraints.maxWidth >= kMedDesktopWidth)
+                        const skillDesktop()
+                      else
+                        const skillMobile()
+                    ],
+                  ),
                 ),
-              ),
 
-              const SizedBox(
-                height: 50,
-              ),
+                const SizedBox(
+                  height: 50,
+                ),
 
-              //Projects
-              const ProjectSection(),
+                //Projects
+                ProjectSection(
+                  key: navbarKeys[2],
+                ),
 
-              const SizedBox(
-                height: 50,
-              ),
+                const SizedBox(
+                  height: 50,
+                ),
 
-              //Contact
-              ContactSection(),
+                //Contact
+                ContactSection(
+                  key: navbarKeys[3],
+                ),
 
-              const SizedBox(
-                height: 30,
-              ),
+                const SizedBox(
+                  height: 30,
+                ),
 
-              //Footer
-              Footer(),
-            ],
+                //Footer
+                Footer(),
+              ],
+            ),
           ));
     });
+  }
+
+  void scrollToSection(int navIndex) {
+    if (navIndex == 4) {
+      return;
+    }
+    final key = navbarKeys[navIndex];
+    Scrollable.ensureVisible(key.currentContext!,
+        duration: const Duration(microseconds: 500), curve: Curves.easeInOut);
   }
 }
