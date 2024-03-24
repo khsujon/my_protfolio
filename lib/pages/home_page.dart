@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_protfolio/constans/colors.dart';
 import 'package:my_protfolio/constans/size.dart';
+import 'package:my_protfolio/widgets/footer.dart';
 import 'package:my_protfolio/widgets/main_mobile.dart';
 
 import '../widgets/contact_section.dart';
@@ -95,12 +96,12 @@ class _HomePageState extends State<HomePage> {
               //Contact
               ContactSection(),
 
-              //Footer
-              Container(
-                height: 500,
-                width: double.maxFinite,
-                //color: Colors.blueGrey,
+              const SizedBox(
+                height: 30,
               ),
+
+              //Footer
+              Footer(),
             ],
           ));
     });
