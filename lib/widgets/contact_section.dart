@@ -1,5 +1,9 @@
+// ignore: avoid_web_libraries_in_flutter
+import 'dart:js' as js;
+
 import 'package:flutter/material.dart';
 import 'package:my_protfolio/constans/size.dart';
+import 'package:my_protfolio/constans/sns_link.dart';
 
 import '../constans/colors.dart';
 import 'custom_textfield.dart';
@@ -47,7 +51,7 @@ class ContactSection extends StatelessWidget {
             constraints: const BoxConstraints(
               maxWidth: 700,
             ),
-            child: const CustomTextfield(
+            child: CustomTextfield(
               hintText: "Your Message",
               maxLines: 15,
             ),
@@ -90,35 +94,45 @@ class ContactSection extends StatelessWidget {
             alignment: WrapAlignment.center,
             children: [
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  js.context.callMethod('open', [SnsLinks.github]);
+                },
                 child: Image.asset(
                   'github.png',
                   width: 28,
                 ),
               ),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  js.context.callMethod('open', [SnsLinks.linkdn]);
+                },
                 child: Image.asset(
                   'linkdin.png',
                   width: 28,
                 ),
               ),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  js.context.callMethod('open', [SnsLinks.instagram]);
+                },
                 child: Image.asset(
                   'instagram.png',
                   width: 28,
                 ),
               ),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  js.context.callMethod('open', [SnsLinks.facebook]);
+                },
                 child: Image.asset(
                   'facebook.png',
                   width: 28,
                 ),
               ),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  js.context.callMethod('open', [SnsLinks.telegram]);
+                },
                 child: Image.asset(
                   'telegram.png',
                   width: 28,
